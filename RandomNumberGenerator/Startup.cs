@@ -12,7 +12,7 @@ namespace RandomNumberGenerator
     {
         public static void Main(string[] args)
         {
-            PythonAnalyser _pythonAnalyser = new PythonAnalyser();
+            var pythonAnalyser = new PythonAnalyser();
             IGeneratorService sumGenerator = new SumGenerator();
             IGeneratorService modGenerator = new ModGenerator();
             IGeneratorService expGenerator = new ExpGenerator();
@@ -23,7 +23,7 @@ namespace RandomNumberGenerator
                 res.Add(modGenerator.Generate(1, 100));
             }
             ResulstsSerialization.Serialize(nameof(modGenerator), res);
-            _pythonAnalyser.Analyse();
+            pythonAnalyser.Analyse();
         }
     }
 }
