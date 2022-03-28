@@ -16,5 +16,11 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-
+    
+    <ItemGroup>
+      <None Remove="PythonModule\analyser.py" />
+      <Content Include="PythonModule\analyser.py">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
 </Project>
