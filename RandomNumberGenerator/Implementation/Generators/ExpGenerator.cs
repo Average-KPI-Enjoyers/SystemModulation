@@ -6,9 +6,11 @@ namespace RandomNumberGenerator.Implementation.Generators
     public class ExpGenerator : IGeneratorService
     {
         private readonly Random _random;
+        public string Name { get; }
         
-        public ExpGenerator()
-        {  
+        public ExpGenerator(string name)
+        {
+            Name = name;
             _random = new Random();
         }
         /// <summary>

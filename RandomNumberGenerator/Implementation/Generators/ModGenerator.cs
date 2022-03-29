@@ -6,9 +6,11 @@ namespace RandomNumberGenerator.Implementation.Generators
     public class ModGenerator : IGeneratorService
     {
         private readonly Random _random;
+        public string Name { get; }
 
-        public ModGenerator()
+        public ModGenerator(string name)
         {
+            Name = name;
             _random = new Random();
         }
 

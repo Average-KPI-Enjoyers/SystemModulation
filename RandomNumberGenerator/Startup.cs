@@ -13,16 +13,20 @@ namespace RandomNumberGenerator
         public static void Main(string[] args)
         {
             var pythonAnalyser = new PythonAnalyser();
-            IGeneratorService sumGenerator = new SumGenerator();
-            IGeneratorService modGenerator = new ModGenerator();
-            IGeneratorService expGenerator = new ExpGenerator();
-            
-            var res = new List<double>();
-            for (var i = 0; i < 10000; i++)
+            IGeneratorService sumGenerator = new SumGenerator("sumGenerator");
+            IGeneratorService modGenerator = new ModGenerator("modGenerator");
+            IGeneratorService expGenerator = new ExpGenerator("expGenerator");
+
+            var generators = new List<IGeneratorService> {sumGenerator, modGenerator, expGenerator};
+            foreach(var generator in generators)
             {
-                res.Add(modGenerator.Generate(1, 100));
+                var res = new List<double>();
+                for (var i = 0; i < 10000; i++)
+                {
+                    res.Add(generator.Generate(1, 100));
+                }
+                ResulstsSerialization.Serialize(generator.Name, res);
             }
-            ResulstsSerialization.Serialize(nameof(modGenerator), res);
             pythonAnalyser.Analyse();
         }
     }

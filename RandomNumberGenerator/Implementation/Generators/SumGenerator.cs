@@ -6,9 +6,11 @@ namespace RandomNumberGenerator.Implementation.Generators
     public class SumGenerator : IGeneratorService
     {
         private readonly Random _random;
+        public string Name { get; }
 
-        public SumGenerator()
+        public SumGenerator(string name)
         {
+            Name = name;
             _random = new Random();
         }
         /// <summary>
