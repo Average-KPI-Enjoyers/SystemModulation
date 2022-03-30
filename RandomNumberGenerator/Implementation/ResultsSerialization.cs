@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RandomNumberGenerator.Implementation
 {
-    public class ResulstsSerialization
+    public static class ResultsSerialization
     {
         public static void Serialize(string filename, IEnumerable<double> result)
         {
