@@ -6,10 +6,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="IronPython" Version="3.4.0-alpha1" />
-    </ItemGroup>
     
     <ItemGroup>
       <None Remove="PythonModule\analyser.py" />
@@ -20,5 +16,9 @@
       <Content Include="PythonModule\config.py">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="RabbitMQ.Client" Version="6.2.4" />
     </ItemGroup>
 </Project>

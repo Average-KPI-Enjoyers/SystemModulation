@@ -5,10 +5,9 @@ namespace RandomNumberGenerator.Implementation
 {
     public static class ResultsSerialization
     {
-        public static void Serialize(string filename, IEnumerable<double> result)
+        public static void Serialize(string filename, IEnumerable<string> result)
         {
-            var convertedResult = DoubleToStringListConverter.Convert(result);
-            System.IO.File.WriteAllLines(filename + ".txt", convertedResult);
+            File.WriteAllLines(filename + ".txt", result);
             Console.WriteLine($"Successfully saved to {filename}.txt");
         }
     }

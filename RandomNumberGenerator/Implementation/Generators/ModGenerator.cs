@@ -6,14 +6,10 @@ namespace RandomNumberGenerator.Implementation.Generators
     public class ModGenerator : AbstractGenerator
     {
         private readonly Random _random;
-        public override string Name { get; }
-
-        public ModGenerator(string name)
+        public ModGenerator(string name) : base(name)
         {
-            Name = name;
             _random = new Random();
         }
-
         /// <summary>
         /// Generate random number by this formula: z(i+1)=bzi("mod"(a)), r(i+1)=z(i+1)⁄c
         /// </summary>

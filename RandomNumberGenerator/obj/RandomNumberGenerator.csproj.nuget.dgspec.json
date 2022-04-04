@@ -38,9 +38,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "IronPython": {
+            "RabbitMQ.Client": {
               "target": "Package",
-              "version": "[3.4.0-alpha1, )"
+              "version": "[6.2.4, )"
             }
           },
           "imports": [

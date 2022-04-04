@@ -1,5 +1,6 @@
+using RabbitMQ.Client;
 using RandomNumberGenerator.Abstract;
-using RandomNumberGenerator.PythonModule;
+using RandomNumberGenerator.RabbitMQModule;
 
 namespace RandomNumberGenerator.Implementation
 {
@@ -7,7 +8,7 @@ namespace RandomNumberGenerator.Implementation
     {
         public static void GenerateAndAnalyse(IEnumerable<AbstractGenerator> generators)
         {
-            var pythonAnalyser = new PythonAnalyser();
+            var queue = new QueueCore(new ConnectionFactory() {HostName = "localhost"});
             foreach(var generator in generators)
             {
                 var res = new List<double>();
@@ -15,9 +16,10 @@ namespace RandomNumberGenerator.Implementation
                 {
                     res.Add(generator.Generate(1, 100));
                 }
-                ResultsSerialization.Serialize(generator.Name, res);
+                var convertedResult = DoubleToStringListConverter.Convert(res).ToList();
+                ResultsSerialization.Serialize(generator.Name, convertedResult);
+                queue.Analyze(generator, convertedResult);
             }
-            pythonAnalyser.Analyse();
         }
     }  
 }

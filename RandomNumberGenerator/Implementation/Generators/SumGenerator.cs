@@ -6,11 +6,8 @@ namespace RandomNumberGenerator.Implementation.Generators
     public class SumGenerator : AbstractGenerator
     {
         private readonly Random _random;
-        public override string Name { get; }
-
-        public SumGenerator(string name)
+        public SumGenerator(string name) : base(name)
         {
-            Name = name;
             _random = new Random();
         }
         /// <summary>

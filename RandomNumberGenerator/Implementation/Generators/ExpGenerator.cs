@@ -6,11 +6,8 @@ namespace RandomNumberGenerator.Implementation.Generators
     public class ExpGenerator : AbstractGenerator
     {
         private readonly Random _random;
-        public override string Name { get; }
-        
-        public ExpGenerator(string name)
+        public ExpGenerator(string name) : base(name)
         {
-            Name = name;
             _random = new Random();
         }
         /// <summary>
