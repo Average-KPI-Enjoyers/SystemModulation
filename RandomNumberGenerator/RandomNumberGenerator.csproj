@@ -10,16 +10,14 @@
     <ItemGroup>
       <PackageReference Include="IronPython" Version="3.4.0-alpha1" />
     </ItemGroup>
-
-    <ItemGroup>
-      <None Update="test.py">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
     
     <ItemGroup>
       <None Remove="PythonModule\analyser.py" />
       <Content Include="PythonModule\analyser.py">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="PythonModule\config.py" />
+      <Content Include="PythonModule\config.py">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

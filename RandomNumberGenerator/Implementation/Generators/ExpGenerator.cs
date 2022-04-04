@@ -3,12 +3,14 @@ using RandomNumberGenerator.Abstract;
 
 namespace RandomNumberGenerator.Implementation.Generators
 {
-    public class ExpGenerator : IGeneratorService
+    public class ExpGenerator : AbstractGenerator
     {
         private readonly Random _random;
+        public override string Name { get; }
         
-        public ExpGenerator()
-        {  
+        public ExpGenerator(string name)
+        {
+            Name = name;
             _random = new Random();
         }
         /// <summary>
@@ -16,7 +18,7 @@ namespace RandomNumberGenerator.Implementation.Generators
         /// </summary>
         /// <param name="args[0]">Stands for λ</param>
         /// <returns>Result as double</returns>
-        public double Generate(params double[] args)
+        public override double Generate(params double[] args)
         {
             var result = (-1 / args[0]) * Math.Log2(_random.NextDouble());
             return result;

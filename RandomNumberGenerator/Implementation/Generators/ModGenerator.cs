@@ -3,12 +3,14 @@ using RandomNumberGenerator.Abstract;
 
 namespace RandomNumberGenerator.Implementation.Generators
 {
-    public class ModGenerator : IGeneratorService
+    public class ModGenerator : AbstractGenerator
     {
         private readonly Random _random;
+        public override string Name { get; }
 
-        public ModGenerator()
+        public ModGenerator(string name)
         {
+            Name = name;
             _random = new Random();
         }
 
@@ -18,7 +20,7 @@ namespace RandomNumberGenerator.Implementation.Generators
         /// <param name="args[0]">Stands for b</param>
         /// <param name="args[1]">Stands for c</param>
         /// <returns>Result as double</returns>
-        public double Generate(params double[] args)
+        public override double Generate(params double[] args)
         {
             return args[0] * _random.NextDouble() % args[1] / args[1];
         }

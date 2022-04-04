@@ -3,12 +3,14 @@ using RandomNumberGenerator.Abstract;
 
 namespace RandomNumberGenerator.Implementation.Generators
 {
-    public class SumGenerator : IGeneratorService
+    public class SumGenerator : AbstractGenerator
     {
         private readonly Random _random;
+        public override string Name { get; }
 
-        public SumGenerator()
+        public SumGenerator(string name)
         {
+            Name = name;
             _random = new Random();
         }
         /// <summary>
@@ -17,7 +19,7 @@ namespace RandomNumberGenerator.Implementation.Generators
         /// <param name="args[0]">Stands for σ</param>
         /// <param name="args[1]">Stands for μ</param>
         /// <returns>Result as double</returns>
-        public double Generate(params double[] args)
+        public override double Generate(params double[] args)
         {
             double result = 0;
             for (int i = 0; i <= 12; i++)

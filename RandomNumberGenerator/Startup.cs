@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using IronPython.Hosting;
 using RandomNumberGenerator.Abstract;
 using RandomNumberGenerator.Implementation;
 using RandomNumberGenerator.Implementation.Generators;
-using RandomNumberGenerator.PythonModule;
+
 
 namespace RandomNumberGenerator
 {
@@ -12,18 +9,12 @@ namespace RandomNumberGenerator
     {
         public static void Main(string[] args)
         {
-            var pythonAnalyser = new PythonAnalyser();
-            IGeneratorService sumGenerator = new SumGenerator();
-            IGeneratorService modGenerator = new ModGenerator();
-            IGeneratorService expGenerator = new ExpGenerator();
+            AbstractGenerator sumGenerator = new SumGenerator(nameof(sumGenerator));
+            AbstractGenerator modGenerator = new ModGenerator(nameof(modGenerator));
+            AbstractGenerator expGenerator = new ExpGenerator(nameof(expGenerator));
             
-            var res = new List<double>();
-            for (var i = 0; i < 10000; i++)
-            {
-                res.Add(modGenerator.Generate(1, 100));
-            }
-            ResulstsSerialization.Serialize(nameof(modGenerator), res);
-            pythonAnalyser.Analyse();
+            var generators = new List<AbstractGenerator> {sumGenerator, modGenerator, expGenerator};
+            ResultsGenerateAndAnalyse.GenerateAndAnalyse(generators);
         }
     }
 }
